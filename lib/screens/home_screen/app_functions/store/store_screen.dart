@@ -10,8 +10,6 @@ class StoreScreen extends StatefulWidget {
 class _StoreScreenState extends State<StoreScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(children: [Text("store")],),
-    );
+    return Column(children: [Text("store")],);
   }
 }

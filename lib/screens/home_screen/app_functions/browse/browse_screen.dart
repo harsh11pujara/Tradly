@@ -10,8 +10,6 @@ class BrowseScreen extends StatefulWidget {
 class _BrowseScreenState extends State<BrowseScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(children: [Text("browse")],),
-    );
+    return Column(children: [Text("browse")],);
   }
 }
