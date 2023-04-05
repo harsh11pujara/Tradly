@@ -1,11 +1,15 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:tradly/screens/authentication_screen/startUp_screens/startup_info.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tradly/screens/authentication_screen/startup_info.dart';
 import 'package:tradly/utilities/themes.dart';
+import 'package:tradly/screens/home_screen/app_navigator_screen.dart';
 
 void main() {
   runApp(const MaterialApp(
+    debugShowCheckedModeBanner: false,
     home: MyApp(),
   ));
 }
@@ -22,7 +26,7 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     Timer(const Duration(seconds: 2), () {
       Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (context) => const StartUpInfo(),
+        builder: (context) =>  StartUpInfo()
       ));
     });
     super.initState();
@@ -31,17 +35,22 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: CustomColor.mainColor),backgroundColor: Colors.transparent,elevation: 0,),
       backgroundColor: CustomColor.mainColor,
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Stack(
               children: [
-                Image.asset("assets/images/splash_box.svg"),
-                Text("T",style: TextStyle(color: CustomColor.mainColor,fontSize: 20),)
+                SvgPicture.asset("assets/images/splash_box.svg"),
+                Positioned(left: 38, top: 20, child: SvgPicture.asset("assets/images/splashT.svg"))
               ],
             ),
-            Text("Tradly", style: TextStyle(color: CustomColor.secondaryColor,fontSize: 20),)
+             Text(
+              "Tradly",
+              style: CustomTheme.lightTheme().textTheme.bodyMedium!.copyWith(fontSize: 30,color: CustomColor.secondaryColor),
+            )
           ],
         ),
       ),

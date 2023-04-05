@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:tradly/screens/authentication_screen/signup_screen.dart';
 import 'package:tradly/utilities/themes.dart';
 import 'package:tradly/utilities/widgets.dart';
 
@@ -14,54 +16,63 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: CustomColor.mainColor,
-      body: Form(
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 80,
-            ),
-            const Text("Welcome to Tradly"),
-            const SizedBox(
-              height: 40,
-            ),
-            const Text("Login to your account"),
-            const SizedBox(
-              height: 20,
-            ),
-            TextFormField(
-              decoration:
-                  const InputDecoration(hintText: "Email/Mobile Number"),
-            ),
-            TextFormField(
-              decoration: const InputDecoration(hintText: "Password"),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            CustomWidgets().customSubmitButton(
-                text: "Login",
-                color: CustomColor.secondaryColor,
-                textColor: CustomColor.mainColor),
-            const SizedBox(
-              height: 10,
-            ),
-            const Text("Forgot your Password ? "),
-            const SizedBox(
-              height: 20,
-            ),
-            Row(
+      body: Container(
+        padding: EdgeInsets.symmetric(horizontal: 22),
+        child: Form(
+          child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: Column(
               children: [
-                const Text("Don't have an account ? "),
-                TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      "Sign Up",
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-                    ))
+                const SizedBox(
+                  height: 150,
+                ),
+                Text(
+                  "Welcome to Tradly",
+                  style: CustomTheme.lightTheme().textTheme.bodyMedium!.copyWith(fontSize: 24, color: CustomColor.secondaryColor),
+                ),
+                const SizedBox(
+                  height: 66,
+                ),
+                Text(
+                  "Login to your account",
+                  style: CustomTheme.lightTheme().textTheme.labelMedium!.copyWith(fontSize: 16),
+                ),
+                const SizedBox(
+                  height: 45,
+                ),
+                CustomWidgets().authTextField(hintText: "Email/Mobile Number",textCapital: TextCapitalization.words),
+
+                const SizedBox(height: 16,),
+                SizedBox(height: 60,child: CustomWidgets().authTextField(hintText: "Password",)),
+                const SizedBox(
+                  height: 32,
+                ),
+                CustomWidgets()
+                    .customSubmitButton(text: "Login", color: CustomColor.secondaryColor, textColor: CustomColor.authButtonColor),
+                const SizedBox(
+                  height: 32,
+                ),
+                Text("Forgot your Password ? ",style: CustomTheme.lightTheme().textTheme.labelMedium,),
+                const SizedBox(
+                  height: 35,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                     Text("Don't have an account ?",style: CustomTheme.lightTheme().textTheme.labelMedium,),
+                    TextButton(
+                        onPressed: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => const SignUpScreen(),));
+                        },
+                        child:  Text(
+                          "Sign Up",
+                          style: CustomTheme.lightTheme().textTheme.labelMedium!.copyWith(fontSize: 20,fontWeight: FontWeight.w700),
+                        ))
+                  ],
+                )
               ],
-            )
-          ],
+            ),
+          ),
         ),
       ),
     );

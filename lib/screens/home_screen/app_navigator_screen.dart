@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tradly/screens/home_screen/app_functions/browse/browse_screen.dart';
 import 'package:tradly/screens/home_screen/app_functions/history/history_screen.dart';
 import 'package:tradly/screens/home_screen/app_functions/home/home_screen.dart';
@@ -7,14 +8,14 @@ import 'package:tradly/screens/home_screen/app_functions/store/store_screen.dart
 import 'package:tradly/utilities/themes.dart';
 import 'package:tradly/utilities/widgets.dart';
 
-class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+class NavigatorScreen extends StatefulWidget {
+  const NavigatorScreen({Key? key}) : super(key: key);
 
   @override
-  State<Home> createState() => _HomeState();
+  State<NavigatorScreen> createState() => _NavigatorScreenState();
 }
 
-class _HomeState extends State<Home> {
+class _NavigatorScreenState extends State<NavigatorScreen> {
   List<Widget> screens = [
     const HomeScreen(),
     const BrowseScreen(),
@@ -58,6 +59,7 @@ class _HomeState extends State<Home> {
       "Profile"
     ];
     return AppBar(
+      toolbarHeight: 150,
       backgroundColor: CustomColor.mainColor,
       title: Column(
         children: [
@@ -77,8 +79,12 @@ class _HomeState extends State<Home> {
                   decoration: InputDecoration(
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30)),
-                      prefixIcon: const Icon(Icons.search),
-                      hintText: "Search Products"),
+                      prefixIcon: Container(child: SvgPicture.asset("assets/icons/searchIcon.svg",height: 34,width: 34,fit: BoxFit.scaleDown,)),
+                      prefixIconConstraints: BoxConstraints(minWidth: 65,minHeight: 60),
+                      hintText: "Search Products",
+                    filled: true,
+                    fillColor: CustomColor.secondaryColor
+                  ),
                 )
               : Container(),
           currentIndex == 1

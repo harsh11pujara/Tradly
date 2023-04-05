@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tradly/screens/authentication_screen/send_OTP.dart';
 import 'package:tradly/utilities/themes.dart';
 import 'package:tradly/utilities/widgets.dart';
 
@@ -13,60 +14,75 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
       backgroundColor: CustomColor.mainColor,
-      body: Form(
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 50,
-            ),
-            const Text("Welcome to Tradly"),
-            const SizedBox(
-              height: 30,
-            ),
-            const Text("Signup to your account"),
-            const SizedBox(
-              height: 10,
-            ),
-            TextFormField(
-              decoration: const InputDecoration(hintText: "First Name"),
-            ),
-            TextFormField(
-              decoration: const InputDecoration(hintText: "Last Name"),
-            ),
-            TextFormField(
-              decoration:
-                  const InputDecoration(hintText: "Email Id/Phone Number"),
-            ),
-            TextFormField(
-              decoration: const InputDecoration(hintText: "Password"),
-            ),
-            TextFormField(
-              decoration: const InputDecoration(hintText: "Re-enter Password"),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            CustomWidgets().customSubmitButton(
-                text: "Create",
-                color: CustomColor.secondaryColor,
-                textColor: CustomColor.mainColor),
-            const SizedBox(
-              height: 20,
-            ),
-            Row(
+      body: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 22),
+        child: Form(
+          child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const Text("Have an account ? "),
-                TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      "Sign In",
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-                    ))
+                const SizedBox(
+                  height: 30,
+                ),
+                Text(
+                  "Welcome to Tradly",
+                  style: CustomTheme.lightTheme().textTheme.bodyMedium!.copyWith(fontSize: 24, color: CustomColor.secondaryColor),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                Text(
+                  "Signup to your account",
+                  style: CustomTheme.lightTheme().textTheme.labelMedium!.copyWith(fontSize: 16),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                CustomWidgets().authTextField(hintText: "First Name"),
+                const SizedBox(height: 16,),
+                CustomWidgets().authTextField(hintText: "Last Name"),
+                const SizedBox(height: 16,),
+                CustomWidgets().authTextField(hintText: "Email Id/Phone Number"),
+                const SizedBox(height: 16,),
+                CustomWidgets().authTextField(hintText: "Password"),
+                const SizedBox(height: 16,),
+                CustomWidgets().authTextField(hintText: "Re-enter Password"),
+                const SizedBox(
+                  height: 46,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const SendOTP(),));
+                  },
+                  child: CustomWidgets()
+                      .customSubmitButton(text: "Create", color: CustomColor.secondaryColor, textColor: CustomColor.authButtonColor),
+                ),
+                const SizedBox(
+                  height: 22,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Have an account ? ",style: CustomTheme.lightTheme().textTheme.labelMedium,),
+                    TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: Text(
+                          "Sign In",
+                          style: CustomTheme.lightTheme().textTheme.labelMedium!.copyWith(fontSize: 20,fontWeight: FontWeight.w700),
+                        ))
+                  ],
+                )
               ],
-            )
-          ],
+            ),
+          ),
         ),
       ),
     );

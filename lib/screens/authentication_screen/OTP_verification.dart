@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:otp_text_field/otp_field.dart';
+import 'package:otp_text_field/otp_field_style.dart';
+import 'package:otp_text_field/style.dart';
+import 'package:tradly/screens/home_screen/app_navigator_screen.dart';
 import 'package:tradly/utilities/themes.dart';
 import 'package:tradly/utilities/widgets.dart';
 
@@ -15,21 +18,58 @@ class _OTPVerificationState extends State<OTPVerification> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: CustomColor.mainColor,
-      body: Column(
-        children: [
-          const SizedBox(height: 50,),
-          const Text("Phone Verification"),
-          const SizedBox(height: 15,),
-          const Text("Enter your OTP code here"),
-          const SizedBox(height: 40,),
-          const OTPTextField(length: 6,width: 200,style: TextStyle(fontSize: 18),),
-          const SizedBox(height: 40,),
-          const Text("Didn't you received any code? "),
-          const SizedBox(height: 5,),
-          const Text("Resent new code"),
-          const SizedBox(height: 20,),
-          CustomWidgets().customSubmitButton(text: "Verify", color: CustomColor.secondaryColor, textColor: CustomColor.mainColor)
-        ],
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
+      body: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 24),
+        child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: Column(
+            children: [
+              const SizedBox(height: 100),
+              Text(
+                "Phone Verification",
+                style: CustomTheme.lightTheme().textTheme.bodyMedium!.copyWith(fontSize: 24, color: CustomColor.secondaryColor),
+              ),
+              const SizedBox(
+                height: 25,
+              ),
+              Text("Enter your OTP code here",
+                style: CustomTheme.lightTheme().textTheme.labelMedium!.copyWith(fontSize: 16),
+              ),
+              const SizedBox(
+                height: 70,
+              ),
+              OTPTextField(
+                length: 6,
+                width: 250,
+                style: CustomTheme.lightTheme().textTheme.labelLarge!,
+                otpFieldStyle: OtpFieldStyle(focusBorderColor: CustomColor.secondaryColor,enabledBorderColor:CustomColor.secondaryColor),
+              ),
+              const SizedBox(
+                height: 40,
+              ),
+               Text("Didn't you received any code? ",style: CustomTheme.lightTheme().textTheme.labelMedium),
+              const SizedBox(
+                height: 8,
+              ),
+               Text("Resent new code",style: CustomTheme.lightTheme().textTheme.labelMedium),
+              const SizedBox(
+                height: 72,
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const NavigatorScreen()), (route) => false);
+
+                },
+                child: CustomWidgets()
+                    .customSubmitButton(text: "Verify", color: CustomColor.secondaryColor, textColor: CustomColor.mainColor),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }

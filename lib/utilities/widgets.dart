@@ -1,28 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:tradly/models/product_model.dart';
 import 'package:tradly/utilities/themes.dart';
 
 class CustomWidgets {
-  Widget customSubmitButton(
-      {required String text, required Color color, required Color textColor}) {
+  Widget customSubmitButton({required String text, required Color color, Color? textColor}) {
     return Container(
-      width: 200,
-      height: 40,
-      decoration:
-          BoxDecoration(color: color, borderRadius: BorderRadius.circular(40)),
+      width: 330,
+      height: 50,
+      decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(40)),
       child: Center(
         child: Text(
           text,
-          style: TextStyle(color: textColor),
+          style: CustomTheme.lightTheme().textTheme.bodyMedium!.copyWith(color: textColor),
         ),
       ),
     );
   }
 
-  Widget sortingWidget(
-      {IconData? icon,
-      required String text,
-      Color backgroundColor = CustomColor.secondaryColor}) {
+  Widget sortingWidget({IconData? icon, required String text, Color backgroundColor = CustomColor.secondaryColor}) {
     return Container(
         padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
         decoration: BoxDecoration(
@@ -68,9 +64,7 @@ class CustomWidgets {
           Row(
             children: [
               CircleAvatar(
-                backgroundImage: product.traderLogoImg != null
-                    ? AssetImage(product.traderLogoImg!)
-                    : null,
+                backgroundImage: product.traderLogoImg != null ? AssetImage(product.traderLogoImg!) : null,
                 backgroundColor: CustomColor.mainColor,
                 child: const Text(
                   "T",
@@ -79,9 +73,7 @@ class CustomWidgets {
               ),
               Text(product.traderName),
               Expanded(child: Container()),
-              product.prevPrice != null
-                  ? Text(product.prevPrice!)
-                  : Container(),
+              product.prevPrice != null ? Text(product.prevPrice!) : Container(),
               Text(
                 product.price,
                 style: const TextStyle(color: CustomColor.mainColor),
@@ -91,5 +83,22 @@ class CustomWidgets {
         ],
       ),
     );
+  }
+
+  Widget authTextField({String? hintText, TextCapitalization textCapital = TextCapitalization.none, String? labelText}) {
+    return TextFormField(
+        style: GoogleFonts.montserrat(color: CustomColor.secondaryColor, fontWeight: FontWeight.w400, fontSize: 18),
+        textCapitalization: textCapital,
+        cursorColor: CustomColor.secondaryColor,
+        decoration: InputDecoration(
+            contentPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+            focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(30),
+                borderSide: const BorderSide(color: Colors.white, width: 1, style: BorderStyle.solid)),
+            enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(30),
+                borderSide: const BorderSide(color: Colors.white, width: 1, style: BorderStyle.solid)),
+            hintText: hintText,
+            hintStyle: GoogleFonts.montserrat(color: CustomColor.secondaryColor, fontWeight: FontWeight.w400, fontSize: 18)));
   }
 }
