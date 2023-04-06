@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tradly/screens/authentication_screen/startup_info.dart';
 import 'package:tradly/utilities/themes.dart';
-import 'package:tradly/screens/home_screen/app_navigator_screen.dart';
+import 'package:tradly/screens/main_screen/app_navigator_screen.dart';
 
 void main() {
   runApp(const MaterialApp(
@@ -26,7 +26,7 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     Timer(const Duration(seconds: 2), () {
       Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (context) =>  StartUpInfo()
+        builder: (context) =>  NavigatorScreen()
       ));
     });
     super.initState();

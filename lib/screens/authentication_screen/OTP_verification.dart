@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/otp_field_style.dart';
 import 'package:otp_text_field/style.dart';
-import 'package:tradly/screens/home_screen/app_navigator_screen.dart';
+import 'package:tradly/screens/main_screen/app_navigator_screen.dart';
 import 'package:tradly/utilities/themes.dart';
 import 'package:tradly/utilities/widgets.dart';
 

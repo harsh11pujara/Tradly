@@ -6,5 +6,5 @@ class ProductModel{
   final String price;
   String? prevPrice;
 
-  ProductModel(this.name, this.img, this.traderName, this.traderLogoImg, this.price);
+  ProductModel({required this.name, required this.img, required this.traderName, this.traderLogoImg, required this.price});
 }

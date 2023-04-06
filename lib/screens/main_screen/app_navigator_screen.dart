@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:tradly/screens/home_screen/app_functions/browse/browse_screen.dart';
-import 'package:tradly/screens/home_screen/app_functions/history/history_screen.dart';
-import 'package:tradly/screens/home_screen/app_functions/home/home_screen.dart';
-import 'package:tradly/screens/home_screen/app_functions/profile/profile_screen.dart';
-import 'package:tradly/screens/home_screen/app_functions/store/store_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:tradly/screens/main_screen/app_functions/browse/browse_screen.dart';
+import 'package:tradly/screens/main_screen/app_functions/history/history_screen.dart';
+import 'package:tradly/screens/main_screen/app_functions/home/home_screen.dart';
+import 'package:tradly/screens/main_screen/app_functions/profile/profile_screen.dart';
+import 'package:tradly/screens/main_screen/app_functions/store/store_screen.dart';
 import 'package:tradly/utilities/themes.dart';
 import 'package:tradly/utilities/widgets.dart';
 
@@ -31,6 +32,13 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
       appBar: customAppbar(),
       body: screens[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
+        unselectedItemColor: Colors.grey,
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: CustomColor.mainColor,
+        iconSize: 24,
+        unselectedLabelStyle: GoogleFonts.montserrat(color: CustomColor.customBlack,fontSize: 10,),
+        showUnselectedLabels: true,
+        selectedLabelStyle: CustomTheme.lightTheme().textTheme.labelLarge!.copyWith(fontSize: 10),
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: "Browse"),
@@ -59,9 +67,10 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
       "Profile"
     ];
     return AppBar(
-      toolbarHeight: 150,
+      toolbarHeight:150,
       backgroundColor: CustomColor.mainColor,
       title: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           Row(
             children: [
@@ -80,7 +89,7 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30)),
                       prefixIcon: Container(child: SvgPicture.asset("assets/icons/searchIcon.svg",height: 34,width: 34,fit: BoxFit.scaleDown,)),
-                      prefixIconConstraints: BoxConstraints(minWidth: 65,minHeight: 60),
+                      prefixIconConstraints: const BoxConstraints(minWidth: 65,minHeight: 60),
                       hintText: "Search Products",
                     filled: true,
                     fillColor: CustomColor.secondaryColor
