@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tradly/models/product_model.dart';
 import 'package:tradly/models/store_model.dart';
+import 'package:tradly/screens/main_screen/product_detail_screen.dart';
 import 'package:tradly/utilities/themes.dart';
 
 class CustomWidgets {
@@ -77,84 +78,88 @@ class CustomWidgets {
     );
   }
 
-  Widget showProduct({required ProductModel product, Color? borderColor}) {
+  Widget showProduct({required BuildContext context,required ProductModel product, Color? borderColor}) {
     // var imgDecode
-    return Container(
-      height: 300,
-      width: 160,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10), border: Border.all(color: borderColor ?? Colors.grey[300]!, width: 1)),
-      child: Column(
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          Container(
-            height: 145,
-            child: ClipRRect(
-              borderRadius: BorderRadius.only(topLeft: Radius.circular(9), topRight: Radius.circular(9)),
-              child: Image.asset(
-                product.img.toString(),
-                width: double.infinity,
-                // height: double.infinity,
-                fit: BoxFit.cover,
+    return GestureDetector(
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetail(product: product),));
+      },
+      child: Container(
+        height: 300,
+        width: 160,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10), border: Border.all(color: borderColor ?? Colors.grey[300]!, width: 1)),
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Container(
+              height: 145,
+              child: ClipRRect(
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(9), topRight: Radius.circular(9)),
+                child: Image.asset(
+                  product.img.toString(),
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Expanded(
-            child: Container(padding: EdgeInsets.symmetric(horizontal: 12,),
-              child: Column(
-                // mainAxisSize: MainAxisSize.min,
-                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(product.name,
-                      style: CustomTheme.lightTheme().textTheme.titleSmall!.copyWith(color: CustomColor.productTextBlack)),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      CircleAvatar(
-                        backgroundImage: product.traderLogoImg.toString() != "" && product.traderLogoImg != null
-                            ? AssetImage(product.traderLogoImg.toString())
-                            : null,
-                        backgroundColor: CustomColor.mainColor,
-                        radius: 10,
-                        child: const Text(
-                          "T",
-                          style: TextStyle(color: CustomColor.secondaryColor),
+            SizedBox(
+              height: 10,
+            ),
+            Expanded(
+              child: Container(padding: EdgeInsets.symmetric(horizontal: 12,),
+                child: Column(
+                  // mainAxisSize: MainAxisSize.min,
+                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(product.name,
+                        style: CustomTheme.lightTheme().textTheme.titleSmall!.copyWith(color: CustomColor.productTextBlack)),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        CircleAvatar(
+                          backgroundImage: product.traderLogoImg.toString() != "" && product.traderLogoImg != null
+                              ? AssetImage(product.traderLogoImg.toString())
+                              : null,
+                          backgroundColor: CustomColor.mainColor,
+                          radius: 10,
+                          child: const Text(
+                            "T",
+                            style: TextStyle(color: CustomColor.secondaryColor),
+                          ),
                         ),
-                      ),
-                      const SizedBox(
-                        width: 6,
-                      ),
-                      Text(
-                        product.traderName,
-                        style: CustomTheme.lightTheme()
-                            .textTheme
-                            .titleSmall!
-                            .copyWith(color: CustomColor.customBlack.withOpacity(0.5)),
-                      ),
-                      // Expanded(child: Container()),
-                      product.prevPrice != null ? Text(product.prevPrice!) : Container(),
-                      Expanded(child: Container()),
-                      Text(
-                        "\$${product.price}",
-                        style: CustomTheme.lightTheme()
-                            .textTheme
-                            .headlineMedium!
-                            .copyWith(color: CustomColor.mainColor, fontSize: 14),
-                      )
-                    ],
-                  ),
-                ],
+                        const SizedBox(
+                          width: 6,
+                        ),
+                        Text(
+                          product.traderName,
+                          style: CustomTheme.lightTheme()
+                              .textTheme
+                              .titleSmall!
+                              .copyWith(color: CustomColor.customBlack.withOpacity(0.5)),
+                        ),
+                        // Expanded(child: Container()),
+                        product.prevPrice != null ? Text(product.prevPrice!) : Container(),
+                        Expanded(child: Container()),
+                        Text(
+                          "\$${product.price}",
+                          style: CustomTheme.lightTheme()
+                              .textTheme
+                              .headlineMedium!
+                              .copyWith(color: CustomColor.mainColor, fontSize: 14),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }

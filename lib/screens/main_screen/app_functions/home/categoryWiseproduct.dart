@@ -41,9 +41,9 @@ class _ProductCategoryState extends State<ProductCategory> {
           centerTitle: true,
           backgroundColor: CustomColor.mainColor,
           bottom: PreferredSize(
-            preferredSize: Size(double.infinity, 60),
+            preferredSize: const Size(double.infinity, 60),
             child: Container(
-              margin: EdgeInsets.only(bottom: 10),
+              margin: const EdgeInsets.only(bottom: 16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -70,14 +70,14 @@ class _ProductCategoryState extends State<ProductCategory> {
             ),
           )),
       body: Container(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         child: GridView.builder(
           physics: const BouncingScrollPhysics(),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2, mainAxisSpacing: 10, crossAxisSpacing: 10, mainAxisExtent: 220),
           itemCount: newProduct.length,
           itemBuilder: (context, index) {
-            return CustomWidgets().showProduct(product: newProduct[index]);
+            return CustomWidgets().showProduct(context: context,product: newProduct[index]);
           },
         ),
       ),

@@ -222,7 +222,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   return Container(
                       margin: const EdgeInsets.symmetric(horizontal: 6),
 
-                      child: CustomWidgets().showProduct(product: newProduct[index]));
+                      child: CustomWidgets().showProduct(context: context,product: newProduct[index]));
                 },
               ),
             ),
@@ -263,7 +263,7 @@ padding: const EdgeInsets.symmetric(horizontal: 6),
                   return Container(
                     margin: const EdgeInsets.symmetric(horizontal: 6),
 
-                  child: CustomWidgets().showProduct(product: newProduct[index]));
+                  child: CustomWidgets().showProduct(context: context,product: newProduct[index]));
                 },
               ),
             ),

@@ -98,6 +98,7 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
                     Container(
                       padding: const EdgeInsets.only(left: 20,right: 20,),
                       child: TextField(
+                        style: CustomTheme.lightTheme().textTheme.titleSmall!.copyWith(color: CustomColor.productTextBlack.withOpacity(0.5)),
                         decoration: InputDecoration(
                             contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
                             border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
