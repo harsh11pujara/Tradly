@@ -36,16 +36,17 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
         type: BottomNavigationBarType.fixed,
         selectedItemColor: CustomColor.mainColor,
         iconSize: 24,
-        unselectedLabelStyle: GoogleFonts.montserrat(color: CustomColor.customBlack,fontSize: 10,),
+        unselectedLabelStyle: GoogleFonts.montserrat(
+          color: CustomColor.customBlack,
+          fontSize: 10,
+        ),
         showUnselectedLabels: true,
         selectedLabelStyle: CustomTheme.lightTheme().textTheme.labelLarge!.copyWith(fontSize: 10),
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: "Browse"),
           BottomNavigationBarItem(icon: Icon(Icons.store), label: "Store"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.featured_play_list_rounded),
-              label: "Order History"),
+          BottomNavigationBarItem(icon: Icon(Icons.featured_play_list_rounded), label: "Order History"),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
         ],
         onTap: (value) {
@@ -59,57 +60,94 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
   }
 
   AppBar customAppbar() {
-    List<String> pageName = [
-      "Groceries",
-      "Browse",
-      "My Store",
-      "Order History",
-      "Profile"
-    ];
+    List<String> pageName = ["Groceries", "Browse", "My Store", "Order History", "Profile"];
     return AppBar(
-      toolbarHeight:150,
-      backgroundColor: CustomColor.mainColor,
-      title: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Row(
-            children: [
-              Text(pageName[currentIndex]),
-              Expanded(
-                child: Container(),
-              ),
-              IconButton(onPressed: () {}, icon: const Icon(Icons.favorite)),
-              IconButton(
-                  onPressed: () {}, icon: const Icon(Icons.shopping_cart))
-            ],
-          ),
-          currentIndex == 0 || currentIndex == 1
-              ? TextField(
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30)),
-                      prefixIcon: Container(child: SvgPicture.asset("assets/icons/searchIcon.svg",height: 34,width: 34,fit: BoxFit.scaleDown,)),
-                      prefixIconConstraints: const BoxConstraints(minWidth: 65,minHeight: 60),
-                      hintText: "Search Products",
-                    filled: true,
-                    fillColor: CustomColor.secondaryColor
-                  ),
-                )
-              : Container(),
-          currentIndex == 1
-              ? Row(
+
+        elevation: 0,
+        toolbarHeight: 80,
+        backgroundColor: CustomColor.mainColor,
+        title: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // SizedBox(height: 0,),
+            Row(
+              children: [
+                Text(
+                  pageName[currentIndex],
+                  style: CustomTheme.lightTheme().textTheme.titleLarge,
+                ),
+                Expanded(
+                  child: Container(),
+                ),
+                IconButton(onPressed: () {}, icon: const Icon(Icons.favorite)),
+                IconButton(onPressed: () {}, icon: const Icon(Icons.shopping_cart))
+              ],
+            ),
+          ],
+        ),
+        bottom: currentIndex == 0 || currentIndex == 1
+            ? PreferredSize(
+                preferredSize: currentIndex == 1 ? const Size(double.infinity, 140) : const Size(double.infinity, 80),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    CustomWidgets()
-                        .sortingWidget(icon: Icons.sort_sharp, text: "Sort by"),
-                    CustomWidgets().sortingWidget(
-                        icon: Icons.location_on, text: "Location"),
-                    CustomWidgets()
-                        .sortingWidget(icon: Icons.list, text: "Category")
+                    const SizedBox(
+                      height: 0,
+                    ),
+                    Container(
+                      padding: const EdgeInsets.only(left: 20,right: 20,),
+                      child: TextField(
+                        decoration: InputDecoration(
+                            contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+                            prefixIcon: SvgPicture.asset(
+                              "assets/icons/searchIcon.svg",
+                              height: 34,
+                              width: 34,
+                              fit: BoxFit.scaleDown,
+                            ),
+                            prefixIconConstraints: const BoxConstraints(minWidth: 65, minHeight: 60),
+                            hintText: "Search Products",
+                            filled: true,
+                            fillColor: CustomColor.secondaryColor),
+                      ),
+                    ),
+                    currentIndex == 1
+                        ? const SizedBox(
+                            height: 28,
+                          )
+                        : Container(),
+                    currentIndex == 1
+                        ? Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              CustomWidgets().sortingWidget(
+                                  paddingH: 10,
+                                  icon: Icons.sort_sharp,
+                                  text: "Sort by",
+                                  backgroundColor: CustomColor.mainColor,
+                                  textStyle: CustomTheme.lightTheme().textTheme.titleSmall),
+                              CustomWidgets().sortingWidget(
+                                  paddingH: 10,
+                                  icon: Icons.location_on,
+                                  text: "Location",
+                                  backgroundColor: CustomColor.mainColor,
+                                  textStyle: CustomTheme.lightTheme().textTheme.titleSmall),
+                              CustomWidgets().sortingWidget(
+                                  paddingH: 10,
+                                  icon: Icons.list,
+                                  text: "Category",
+                                  backgroundColor: CustomColor.mainColor,
+                                  textStyle: CustomTheme.lightTheme().textTheme.titleSmall)
+                            ],
+                          )
+                        : Container(),
+                    const SizedBox(
+                      height: 16,
+                    )
                   ],
-                )
-              : Container(),
-        ],
-      ),
-    );
+                ))
+            : null);
   }
 }
