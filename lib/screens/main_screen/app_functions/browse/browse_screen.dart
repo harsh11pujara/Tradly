@@ -31,7 +31,7 @@ class _BrowseScreenState extends State<BrowseScreen> {
   @override
   Widget build(BuildContext context) {
     return  Container(
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.only(top: 20,left: 18,right:18),
       child: GridView.builder(
         physics: const BouncingScrollPhysics(),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

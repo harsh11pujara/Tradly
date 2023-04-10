@@ -3,16 +3,15 @@ import 'package:tradly/models/product_model.dart';
 import 'package:tradly/utilities/themes.dart';
 import 'package:tradly/utilities/widgets.dart';
 
-class ProductCategory extends StatefulWidget {
-  const ProductCategory({Key? key, required this.title}) : super(key: key);
-  final String title;
+class WishlistScreen extends StatefulWidget {
+  const WishlistScreen({Key? key}) : super(key: key);
 
   @override
-  State<ProductCategory> createState() => _ProductCategoryState();
+  State<WishlistScreen> createState() => _WishlistScreenState();
 }
 
-class _ProductCategoryState extends State<ProductCategory> {
-  List<ProductModel> newProduct = [
+class _WishlistScreenState extends State<WishlistScreen> {
+  List<ProductModel> wishlistProduct = [
     ProductModel(name: "CocaCola", img: "assets/images/products/cocaCola.jpeg", traderName: "Tradly", price: "25"),
     ProductModel(name: "Cookies", img: "assets/images/products/cookies.jpeg", traderName: "Tradly", price: "25"),
     ProductModel(name: "Milk", img: "assets/images/products/milk.jpeg", traderName: "Tradly", price: "25"),
@@ -34,50 +33,24 @@ class _ProductCategoryState extends State<ProductCategory> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text(
-            widget.title,
-            style: CustomTheme.lightTheme().textTheme.labelLarge,
-          ),
-          centerTitle: true,
-          backgroundColor: CustomColor.mainColor,
-          bottom: PreferredSize(
-            preferredSize: const Size(double.infinity, 60),
-            child: Container(
-              margin: const EdgeInsets.only(bottom: 16),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  CustomWidgets().sortingWidget(
-                      paddingH: 12,
-                      icon: Icons.sort_sharp,
-                      text: "Sort by",
-                      backgroundColor: CustomColor.mainColor,
-                      textStyle: CustomTheme.lightTheme().textTheme.titleSmall),
-                  CustomWidgets().sortingWidget(
-                    paddingH: 12,
-                      icon: Icons.location_on,
-                      text: "Location",
-                      backgroundColor: CustomColor.mainColor,
-                      textStyle: CustomTheme.lightTheme().textTheme.titleSmall),
-                  CustomWidgets().sortingWidget(
-                      paddingH: 12,
-                      icon: Icons.list,
-                      text: "Category",
-                      backgroundColor: CustomColor.mainColor,
-                      textStyle: CustomTheme.lightTheme().textTheme.titleSmall)
-                ],
-              ),
-            ),
-          )),
+        title: Text(
+          "Wishlist",
+          style: CustomTheme.lightTheme().textTheme.labelLarge,
+        ),
+        centerTitle: true,
+        backgroundColor: CustomColor.mainColor,
+        elevation: 0,
+        toolbarHeight: 80,
+      ),
       body: Container(
         padding: const EdgeInsets.only(top: 20,left: 18,right:18),
         child: GridView.builder(
           physics: const BouncingScrollPhysics(),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2, mainAxisSpacing: 10, crossAxisSpacing: 10, mainAxisExtent: 220),
-          itemCount: newProduct.length,
+          itemCount: wishlistProduct.length,
           itemBuilder: (context, index) {
-            return CustomWidgets().showProduct(context: context,product: newProduct[index]);
+            return CustomWidgets().showProduct(context: context,product: wishlistProduct[index]);
           },
         ),
       ),

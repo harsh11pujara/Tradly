@@ -6,6 +6,8 @@ import 'package:tradly/screens/main_screen/app_functions/history/history_screen.
 import 'package:tradly/screens/main_screen/app_functions/home/home_screen.dart';
 import 'package:tradly/screens/main_screen/app_functions/profile/profile_screen.dart';
 import 'package:tradly/screens/main_screen/app_functions/store/store_screen.dart';
+import 'package:tradly/screens/main_screen/cart/cart_screen.dart';
+import 'package:tradly/screens/main_screen/wishlist_screen.dart';
 import 'package:tradly/utilities/themes.dart';
 import 'package:tradly/utilities/widgets.dart';
 
@@ -80,8 +82,12 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
                 Expanded(
                   child: Container(),
                 ),
-                IconButton(onPressed: () {}, icon: const Icon(Icons.favorite)),
-                IconButton(onPressed: () {}, icon: const Icon(Icons.shopping_cart))
+                IconButton(onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const WishlistScreen(),));
+                }, icon: const Icon(Icons.favorite)),
+                IconButton(onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => CartScreen(),));
+                }, icon: const Icon(Icons.shopping_cart))
               ],
             ),
           ],

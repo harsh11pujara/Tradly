@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
     CategoryModel(img: "assets/images/petCare.jpeg", title: "Pet Care"),
     CategoryModel(img: "assets/images/vegetables.jpeg", title: "Vegetables"),
   ];
-  
+
   List<StoreModel> storeList = [
     StoreModel(img: "assets/images/store/store1.jpeg", name: "Tradly"),
     StoreModel(img: "assets/images/store/store2.jpeg", name: "Groceries Store"),
@@ -214,15 +214,13 @@ class _HomeScreenState extends State<HomeScreen> {
               width: width,
               child: ListView.builder(
                 padding: const EdgeInsets.symmetric(horizontal: 6),
-
                 physics: const BouncingScrollPhysics(),
                 scrollDirection: Axis.horizontal,
                 itemCount: newProduct.length,
                 itemBuilder: (context, index) {
                   return Container(
                       margin: const EdgeInsets.symmetric(horizontal: 6),
-
-                      child: CustomWidgets().showProduct(context: context,product: newProduct[index]));
+                      child: CustomWidgets().showProduct(context: context, product: newProduct[index]));
                 },
               ),
             ),
@@ -253,66 +251,76 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 220,
               width: width,
               child: ListView.builder(
-padding: const EdgeInsets.symmetric(horizontal: 6),
+                padding: const EdgeInsets.symmetric(horizontal: 6),
                 physics: const BouncingScrollPhysics(),
                 scrollDirection: Axis.horizontal,
-
                 itemCount: newProduct.length,
                 itemBuilder: (context, index) {
                   newProduct.shuffle();
                   return Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 6),
-
-                  child: CustomWidgets().showProduct(context: context,product: newProduct[index]));
+                      margin: const EdgeInsets.symmetric(horizontal: 6),
+                      child: CustomWidgets().showProduct(context: context, product: newProduct[index]));
                 },
               ),
             ),
-            const SizedBox(height: 30,),
-            Stack(children: [
-              Container(height: 184,width: double.infinity,color: CustomColor.mainColor,),
-              Column(children: [
-                const SizedBox(height: 20,),
+            const SizedBox(
+              height: 30,
+            ),
+            Stack(
+              children: [
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Store to Follow",
-                        style: CustomTheme.lightTheme().textTheme.headlineMedium!.copyWith(color: CustomColor.secondaryColor),
+                  height: 184,
+                  width: double.infinity,
+                  color: CustomColor.mainColor,
+                ),
+                Column(
+                  children: [
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Store to Follow",
+                            style: CustomTheme.lightTheme().textTheme.headlineMedium!.copyWith(color: CustomColor.secondaryColor),
+                          ),
+                          CustomWidgets().sortingWidget(
+                              paddingH: 23,
+                              text: "See All",
+                              backgroundColor: CustomColor.secondaryColor,
+                              textStyle: CustomTheme.lightTheme().textTheme.titleSmall!.copyWith(color: CustomColor.mainColor))
+                        ],
                       ),
-                      CustomWidgets().sortingWidget(
-                          paddingH: 23,
-                          text: "See All",
-                          backgroundColor: CustomColor.secondaryColor,
-                          textStyle: CustomTheme.lightTheme().textTheme.titleSmall!.copyWith(color: CustomColor.mainColor))
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                SizedBox(
-                  height: 210,
-                  width: width,
-                  child: ListView.builder(
-                    physics: const BouncingScrollPhysics(),
-                    scrollDirection: Axis.horizontal,
-                    itemCount: storeList.length,
-                    itemBuilder: (context, index) {
-                      storeList.shuffle();
-                      return CustomWidgets().storeFollowWidget(storeList[index]);
-                    },
-                  ),
-                ),
-                const SizedBox(height: 10,)
-              ],)
-            ],)
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    SizedBox(
+                      height: 210,
+                      width: width,
+                      child: ListView.builder(
+                        physics: const BouncingScrollPhysics(),
+                        scrollDirection: Axis.horizontal,
+                        itemCount: storeList.length,
+                        itemBuilder: (context, index) {
+                          storeList.shuffle();
+                          return CustomWidgets().storeFollowWidget(storeList[index]);
+                        },
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    )
+                  ],
+                )
+              ],
+            )
           ],
         ),
       ),
     );
   }
-
-
 }

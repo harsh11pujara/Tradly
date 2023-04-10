@@ -17,6 +17,9 @@ class CustomTheme {
             headlineMedium: GoogleFonts.montserrat(color: CustomColor.customBlack, fontSize: 18, fontWeight: FontWeight.w700),
             titleSmall: GoogleFonts.montserrat(color: CustomColor.secondaryColor, fontSize: 14, fontWeight: FontWeight.w500),
           titleLarge: GoogleFonts.montserrat(color: CustomColor.secondaryColor, fontSize: 24, fontWeight: FontWeight.w700),
+          bodySmall: GoogleFonts.montserrat(color: CustomColor.productTextBlack.withOpacity(0.7), fontSize: 14, fontWeight: FontWeight.w400),
+          labelSmall: GoogleFonts.montserrat(color: CustomColor.productTextBlack, fontSize: 14, fontWeight: FontWeight.w500),
+          displaySmall: GoogleFonts.montserrat(color: CustomColor.productTextBlack, fontSize: 14, fontWeight: FontWeight.w600),
         ));
   }
 }
@@ -27,4 +30,6 @@ class CustomColor {
   static const authButtonColor = Color(0xFF13B58C);
   static const customBlack = Color(0xFF4F4F4F);
   static const productTextBlack = Color(0xFF4A4A4A);
+  static const backgroundColor = Color(0xFFE5E5E5);
+  static const textFieldColor = Color(0xFF333A42);
 }
