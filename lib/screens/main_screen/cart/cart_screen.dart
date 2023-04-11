@@ -173,7 +173,7 @@ class _CartScreenState extends State<CartScreen> {
                 child: GestureDetector(
                   onTap: () {
                     if(widget.address != null){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => const PaymentOption(),));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => PaymentOption(address: widget.address!),));
                     }
                   },
                   child: CustomWidgets().sortingWidget(

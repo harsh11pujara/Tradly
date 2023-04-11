@@ -7,6 +7,7 @@ import 'package:tradly/screens/authentication_screen/startup_info.dart';
 import 'package:tradly/utilities/themes.dart';
 import 'package:tradly/screens/main_screen/app_navigator_screen.dart';
 
+
 void main() {
   runApp(const MaterialApp(
     debugShowCheckedModeBanner: false,
@@ -25,9 +26,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     Timer(const Duration(seconds: 2), () {
-      Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (context) =>  NavigatorScreen()
-      ));
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => NavigatorScreen()));
     });
     super.initState();
   }
@@ -35,7 +34,11 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: CustomColor.mainColor),backgroundColor: Colors.transparent,elevation: 0,),
+      appBar: AppBar(
+        systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: CustomColor.mainColor),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
       backgroundColor: CustomColor.mainColor,
       body: Center(
         child: Column(
@@ -47,9 +50,9 @@ class _MyAppState extends State<MyApp> {
                 Positioned(left: 38, top: 20, child: SvgPicture.asset("assets/images/splashT.svg"))
               ],
             ),
-             Text(
+            Text(
               "Tradly",
-              style: CustomTheme.lightTheme().textTheme.bodyMedium!.copyWith(fontSize: 30,color: CustomColor.secondaryColor),
+              style: CustomTheme.lightTheme().textTheme.bodyMedium!.copyWith(fontSize: 30, color: CustomColor.secondaryColor),
             )
           ],
         ),
