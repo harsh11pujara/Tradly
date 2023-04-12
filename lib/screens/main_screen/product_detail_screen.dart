@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tradly/models/product_model.dart';
+import 'package:tradly/screens/main_screen/store_details.dart';
 import 'package:tradly/utilities/themes.dart';
 import 'package:tradly/utilities/widgets.dart';
 
@@ -135,11 +136,20 @@ class _ProductDetailState extends State<ProductDetail> {
                             CustomTheme.lightTheme().textTheme.titleSmall!.copyWith(fontSize: 16, color: CustomColor.customBlack),
                       ),
                       Expanded(child: Container()),
-                      CustomWidgets().sortingWidget(
-                          text: "Follow",
-                          paddingH: 23,
-                          backgroundColor: CustomColor.mainColor,
-                          textStyle: CustomTheme.lightTheme().textTheme.titleSmall)
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const StoreDetails(),
+                              ));
+                        },
+                        child: CustomWidgets().sortingWidget(
+                            text: "Follow",
+                            paddingH: 23,
+                            backgroundColor: CustomColor.mainColor,
+                            textStyle: CustomTheme.lightTheme().textTheme.titleSmall),
+                      )
                     ],
                   ),
                 ),
@@ -208,7 +218,7 @@ class _ProductDetailState extends State<ProductDetail> {
                   ),
                 ),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 15),
+                  padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                   decoration: BoxDecoration(borderRadius: BorderRadius.circular(8), color: CustomColor.secondaryColor),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -217,7 +227,9 @@ class _ProductDetailState extends State<ProductDetail> {
                         "Additional Details",
                         style: CustomTheme.lightTheme().textTheme.headlineMedium,
                       ),
-                      const SizedBox(height: 15,),
+                      const SizedBox(
+                        height: 15,
+                      ),
                       Table(
                         columnWidths: const {0: FlexColumnWidth(2), 1: FlexColumnWidth(4)},
                         children: [

@@ -32,4 +32,6 @@ class CustomColor {
   static const productTextBlack = Color(0xFF4A4A4A);
   static const backgroundColor = Color(0xFFE5E5E5);
   static const textFieldColor = Color(0xFF333A42);
+  static const taglineColor = Color(0xFFD8D8D8);
+  static const dividerColor = Color(0xFFEFEFEF);
 }

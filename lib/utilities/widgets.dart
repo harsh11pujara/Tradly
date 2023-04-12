@@ -233,7 +233,7 @@ class CustomWidgets {
                   ),
                 ),
                 const SizedBox(height: 7,),
-                Text(store.name,style: CustomTheme.lightTheme().textTheme.titleSmall!.copyWith(color: CustomColor.productTextBlack),),
+                Text(store.name.toString(),style: CustomTheme.lightTheme().textTheme.titleSmall!.copyWith(color: CustomColor.productTextBlack),),
                 const SizedBox(height: 15,),
                 CustomWidgets().sortingWidget(text: "Follow" , backgroundColor: CustomColor.mainColor,textStyle: CustomTheme.lightTheme().textTheme.titleSmall,paddingH: 23,paddingV: 5)
               ],

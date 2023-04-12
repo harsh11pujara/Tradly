@@ -111,7 +111,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                         steps: [
 
                           Step(
-                            label: CircleAvatar(
+                            label: const CircleAvatar(
                               backgroundColor: Colors.blue,
                             ),
                             title: const Text(''),
