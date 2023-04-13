@@ -77,7 +77,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                       width: 42,
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(5),
-                        child: Image.asset(newProduct[index].img, width: double.infinity, fit: BoxFit.cover),
+                        child: Image.asset(newProduct[index].img.toString(), width: double.infinity, fit: BoxFit.cover),
                       ),
                     ),
                     title: Text(

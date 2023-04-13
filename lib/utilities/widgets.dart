@@ -78,17 +78,17 @@ class CustomWidgets {
     );
   }
 
-  Widget showProduct({required BuildContext context,required ProductModel product, Color? borderColor}) {
+  Widget showProduct({double? height = 300, double? width = 160, required BuildContext context,required ProductModel product, Color? borderColor}) {
     // var imgDecode
     return GestureDetector(
       onTap: (){
         Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetail(product: product),));
       },
       child: Container(
-        height: 300,
-        width: 160,
+        height: height,
+        width: width,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10), border: Border.all(color: borderColor ?? Colors.grey[300]!, width: 1)),
+            color: CustomColor.secondaryColor,borderRadius: BorderRadius.circular(10), border: Border.all(color: borderColor ?? Colors.grey[300]!, width: 1)),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
@@ -136,7 +136,7 @@ class CustomWidgets {
                           width: 6,
                         ),
                         Text(
-                          product.traderName,
+                          product.traderName.toString(),
                           style: CustomTheme.lightTheme()
                               .textTheme
                               .titleSmall!

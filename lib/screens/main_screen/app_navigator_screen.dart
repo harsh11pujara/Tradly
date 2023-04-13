@@ -64,7 +64,6 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
   AppBar customAppbar() {
     List<String> pageName = ["Groceries", "Browse", "My Store", "Order History", "Profile"];
     return AppBar(
-
         elevation: 0,
         toolbarHeight: 80,
         backgroundColor: CustomColor.mainColor,
@@ -82,12 +81,24 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
                 Expanded(
                   child: Container(),
                 ),
-                IconButton(onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const WishlistScreen(),));
-                }, icon: const Icon(Icons.favorite)),
-                IconButton(onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => CartScreen(),));
-                }, icon: const Icon(Icons.shopping_cart))
+                IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const WishlistScreen(),
+                          ));
+                    },
+                    icon: const Icon(Icons.favorite)),
+                IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CartScreen(),
+                          ));
+                    },
+                    icon: const Icon(Icons.shopping_cart))
               ],
             ),
           ],
@@ -102,12 +113,24 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
                       height: 0,
                     ),
                     Container(
-                      padding: const EdgeInsets.only(left: 20,right: 20,),
+                      padding: const EdgeInsets.only(
+                        left: 20,
+                        right: 20,
+                      ),
                       child: TextField(
-                        style: CustomTheme.lightTheme().textTheme.titleSmall!.copyWith(color: CustomColor.productTextBlack.withOpacity(0.5)),
+                        style: CustomTheme.lightTheme()
+                            .textTheme
+                            .titleSmall!
+                            .copyWith(fontSize: 18, color: CustomColor.productTextBlack.withOpacity(0.5)),
+                        textCapitalization: TextCapitalization.words,
                         decoration: InputDecoration(
                             contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
-                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                borderSide: BorderSide(color: CustomColor.secondaryColor)),
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                borderSide: BorderSide(color: CustomColor.secondaryColor)),
                             prefixIcon: SvgPicture.asset(
                               "assets/icons/searchIcon.svg",
                               height: 34,

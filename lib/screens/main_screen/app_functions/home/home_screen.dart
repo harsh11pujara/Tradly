@@ -162,12 +162,12 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 5,
             ),
             SizedBox(
-              height: 200,
               width: width,
               child: GridView.builder(
                 gridDelegate:
                     const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4, mainAxisSpacing: 1, crossAxisSpacing: 1),
                 physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
                 itemCount: categoryTypes.length,
                 itemBuilder: (context, index) {
                   return GestureDetector(

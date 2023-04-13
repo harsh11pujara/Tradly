@@ -23,6 +23,7 @@ class _OTPVerificationState extends State<OTPVerification> {
         elevation: 0,
       ),
       body: Container(
+        width: MediaQuery.of(context).size.width,
         padding: const EdgeInsets.symmetric(horizontal: 24),
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),

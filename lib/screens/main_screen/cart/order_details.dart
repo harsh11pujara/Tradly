@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:timelines/timelines.dart';
+import 'package:timeline_tile/timeline_tile.dart';
 import 'package:tradly/models/address_model.dart';
 import 'package:tradly/models/product_model.dart';
+import 'package:tradly/screens/main_screen/app_navigator_screen.dart';
 import 'package:tradly/utilities/themes.dart';
 
 class OrderDetails extends StatefulWidget {
@@ -35,7 +36,14 @@ class _OrderDetailsState extends State<OrderDetails> {
         toolbarHeight: 80,
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const NavigatorScreen(),
+                  ),
+                  (route) => false);
+            },
             icon: const Icon(Icons.close, color: CustomColor.secondaryColor),
             padding: EdgeInsets.zero,
           )
@@ -81,50 +89,162 @@ class _OrderDetailsState extends State<OrderDetails> {
               Container(
                 height: 404,
                 width: MediaQuery.of(context).size.width,
-                color: CustomColor.secondaryColor,
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
                 margin: const EdgeInsets.only(top: 16, bottom: 24),
+                decoration: BoxDecoration(color: CustomColor.secondaryColor, borderRadius: BorderRadius.circular(8)),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text("Track Order"),
-                    const Text("Order ID - 123455"),
+                    Text("Track Order",
+                        style: CustomTheme.lightTheme()
+                            .textTheme
+                            .displaySmall!
+                            .copyWith(fontSize: 16, color: const Color(0xFF212121))),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Text("Order ID - 123455",
+                        style: CustomTheme.lightTheme().textTheme.labelSmall!.copyWith(color: const Color(0xFF606A7B))),
+                    const SizedBox(
+                      height: 10,
+                    ),
                     const SizedBox(
                         width: 68,
                         child: Divider(
                           color: CustomColor.mainColor,
                           thickness: 3,
                         )),
-                    Stepper(
-                        controlsBuilder: (context, details) {
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    TimelineTile(
 
-                          return Row(
-                            children: <Widget>[
-                              Container(
-                                child: null,
-                              ),
-                              Container(
-                                child: null,
-                              ),
-                            ], // <Widget>[]
-                          );
-                        },
-                        steps: [
+                      indicatorStyle: IndicatorStyle(color: CustomColor.mainColor,),
+                      afterLineStyle: LineStyle(color: CustomColor.mainColor),
+                      endChild: Container(height: 70, child: Text("hii")),
+                      isFirst: true,
+                    ),
+                    TimelineTile(
+                      beforeLineStyle: LineStyle(color: Colors.orange),
+                      indicatorStyle: IndicatorStyle(color: CustomColor.mainColor,),
+                      // afterLineStyle: LineStyle(color: CustomColor.mainColor),
+                      endChild: Container(height: 70, child: Text("hii")),
+                    ),
+                    TimelineTile(
+                      // beforeLineStyle:  LineStyle(color: CustomColor.mainColor),
 
-                          Step(
-                            label: const CircleAvatar(
-                              backgroundColor: Colors.blue,
-                            ),
-                            title: const Text(''),
-                            content: Container(alignment: Alignment.centerLeft, child: const Text('Content for Step 1')),
-                          ),
-                          const Step(
-                            title: Text('Step 2 title'),
-                            content: Text('Content for Step 2'),
-                          ),
-                        ])
+                      endChild: Container(height: 70, child: Text("hii")),
+                    ),
+                    TimelineTile(
+                      endChild: Container(height: 70, child: Text("hii")),
+                      isLast: true,
+                    ),
+                    // Stepper(
+                    //     controlsBuilder: (context, details) {
+                    //       return Row(
+                    //         children: <Widget>[
+                    //           Container(
+                    //             child: null,
+                    //           ),
+                    //           Container(
+                    //             child: null,
+                    //           ),
+                    //         ], // <Widget>[]
+                    //       );
+                    //     },
+                    //     steps: [
+                    //       Step(
+                    //         label: const CircleAvatar(
+                    //           backgroundColor: Colors.blue,
+                    //         ),
+                    //         title: const Text(''),
+                    //         content: Container(alignment: Alignment.centerLeft, child: const Text('Content for Step 1')),
+                    //       ),
+                    //       const Step(
+                    //
+                    //         title: Text('Step 2 title'),
+                    //         content: Text('Content for Step 2'),
+                    //       ),
+                    //     ])
                   ],
                 ),
-              )
+              ),
+              Container(
+                height: 146,
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(color: CustomColor.secondaryColor, borderRadius: BorderRadius.circular(8)),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.only(top: 16, bottom: 13, left: 18, right: 18),
+                      child: Text(
+                        "Delivery Address",
+                        style: CustomTheme.lightTheme().textTheme.displaySmall!.copyWith(fontSize: 16),
+                      ),
+                    ),
+                    const Divider(
+                      height: 1,
+                      color: CustomColor.backgroundColor,
+                    ),
+                    Expanded(
+                      // padding: EdgeInsets.only(top: 11,left: 18),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 18),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text(
+                              "Tradly team",
+                              style: CustomTheme.lightTheme().textTheme.labelSmall!.copyWith(color: CustomColor.textFieldColor),
+                            ),
+                            Text(
+                              "Flat Number 512, Eden Garden, Rewari",
+                              style: CustomTheme.lightTheme().textTheme.labelSmall!.copyWith(color: const Color(0xFF606A7B)),
+                            ),
+                            Row(
+                              children: [
+                                Text("Mobile:",
+                                    style:
+                                        CustomTheme.lightTheme().textTheme.labelSmall!.copyWith(color: const Color(0xFF606A7B))),
+                                const SizedBox(
+                                  width: 6,
+                                ),
+                                Text("9876543210",
+                                    style:
+                                        CustomTheme.lightTheme().textTheme.labelSmall!.copyWith(color: const Color(0xFF333942)))
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 18,
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const NavigatorScreen(),
+                      ),
+                      (route) => false);
+                },
+                child: Text("Back to Home",
+                    style: CustomTheme.lightTheme().textTheme.displaySmall!.copyWith(
+                          fontSize: 16,
+                          color: const Color(0xFF212121),
+                        )),
+              ),
+              const SizedBox(
+                height: 40,
+              ),
             ],
           ),
         ),
@@ -149,7 +269,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                   child: ClipRRect(
                       borderRadius: BorderRadius.circular(10),
                       child: Image.asset(
-                        newProduct[index].img,
+                        newProduct[index].img.toString(),
                         width: double.infinity,
                         fit: BoxFit.cover,
                       ))),

@@ -291,7 +291,9 @@ class _CreateStoreState extends State<CreateStore> {
                                               actions: [
                                                 TextButton(
                                                     onPressed: () {
-                                                      taglineList.add(tagline.text.trim());
+                                                      setState(() {
+                                                        taglineList.add(tagline.text.trim());
+                                                      });
                                                       tagline.clear();
                                                       Navigator.pop(context);
                                                     },

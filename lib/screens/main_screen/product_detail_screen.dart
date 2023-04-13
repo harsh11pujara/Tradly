@@ -67,7 +67,7 @@ class _ProductDetailState extends State<ProductDetail> {
                     height: 275,
                     width: double.infinity,
                     child: Image.asset(
-                      widget.product.img,
+                      widget.product.img.toString(),
                       width: double.infinity,
                       fit: BoxFit.cover,
                     )),
@@ -131,7 +131,7 @@ class _ProductDetailState extends State<ProductDetail> {
                         width: 11,
                       ),
                       Text(
-                        widget.product.traderName,
+                        widget.product.traderName.toString(),
                         style:
                             CustomTheme.lightTheme().textTheme.titleSmall!.copyWith(fontSize: 16, color: CustomColor.customBlack),
                       ),
@@ -235,10 +235,10 @@ class _ProductDetailState extends State<ProductDetail> {
                         children: [
                           TableRow(children: [
                             Container(
-                                margin: const EdgeInsets.symmetric(vertical: 8),
+                                margin: const EdgeInsets.symmetric(vertical: 8,horizontal: 8),
                                 child: Text("Delivery Details", style: CustomTheme.lightTheme().textTheme.bodySmall)),
                             Container(
-                                margin: const EdgeInsets.symmetric(vertical: 8),
+                                margin: const EdgeInsets.symmetric(vertical: 8,horizontal: 8),
                                 child: Text(
                                   "Home Delivery Available, Cash On Delivery",
                                   style:
