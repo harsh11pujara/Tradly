@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:tradly/screens/authentication_screen/send_OTP.dart';
 import 'package:tradly/utilities/themes.dart';
@@ -45,41 +46,49 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   height: 20,
                 ),
                 CustomWidgets().authTextField(hintText: "First Name"),
-                const SizedBox(height: 16,),
+                const SizedBox(
+                  height: 16,
+                ),
                 CustomWidgets().authTextField(hintText: "Last Name"),
-                const SizedBox(height: 16,),
+                const SizedBox(
+                  height: 16,
+                ),
                 CustomWidgets().authTextField(hintText: "Email Id/Phone Number"),
-                const SizedBox(height: 16,),
+                const SizedBox(
+                  height: 16,
+                ),
                 CustomWidgets().authTextField(hintText: "Password"),
-                const SizedBox(height: 16,),
+                const SizedBox(
+                  height: 16,
+                ),
                 CustomWidgets().authTextField(hintText: "Re-enter Password"),
                 const SizedBox(
                   height: 46,
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const SendOTP(),));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const SendOTP(),
+                        ));
                   },
-                  child: CustomWidgets()
-                      .customSubmitButton(text: "Create", color: CustomColor.secondaryColor, textColor: CustomColor.authButtonColor),
+                  child: CustomWidgets().customSubmitButton(
+                      text: "Create", color: CustomColor.secondaryColor, textColor: CustomColor.authButtonColor),
                 ),
                 const SizedBox(
                   height: 22,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text("Have an account ? ",style: CustomTheme.lightTheme().textTheme.labelMedium,),
-                    TextButton(
-                        onPressed: () {
+                RichText(
+                    text: TextSpan(text: "Have an account ? ", style: CustomTheme.lightTheme().textTheme.labelMedium, children: [
+                  TextSpan(
+                      text: "Sign In",
+                      style: CustomTheme.lightTheme().textTheme.labelMedium!.copyWith(fontSize: 20, fontWeight: FontWeight.w700),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
                           Navigator.pop(context);
-                        },
-                        child: Text(
-                          "Sign In",
-                          style: CustomTheme.lightTheme().textTheme.labelMedium!.copyWith(fontSize: 20,fontWeight: FontWeight.w700),
-                        ))
-                  ],
-                )
+                        })
+                ])),
               ],
             ),
           ),

@@ -35,19 +35,23 @@ class _ProductDetailState extends State<ProductDetail> {
             ),
             Expanded(child: Container()),
             FloatingActionButton.small(
+
               heroTag: "share btn",
               elevation: 0.5,
               onPressed: () {},
               backgroundColor: CustomColor.secondaryColor.withOpacity(0.2),
               child: const Icon(Icons.share),
             ),
+            SizedBox(width: 13,),
             FloatingActionButton.small(
+              highlightElevation: 0,
               heroTag: "wishlist btn",
               elevation: 0.5,
               onPressed: () {},
               backgroundColor: CustomColor.secondaryColor.withOpacity(0.2),
               child: const Icon(Icons.favorite_border_sharp),
             ),
+            SizedBox(width: 13,),
             FloatingActionButton.small(
               heroTag: "more btn",
               elevation: 0.5,
@@ -138,7 +142,7 @@ class _ProductDetailState extends State<ProductDetail> {
                       Expanded(child: Container()),
                       GestureDetector(
                         onTap: () {
-                          Navigator.pushReplacement(
+                          Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => const StoreDetails(),

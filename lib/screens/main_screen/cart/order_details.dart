@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:timeline_tile/timeline_tile.dart';
 import 'package:tradly/models/address_model.dart';
 import 'package:tradly/models/product_model.dart';
 import 'package:tradly/screens/main_screen/app_navigator_screen.dart';
@@ -117,55 +116,359 @@ class _OrderDetailsState extends State<OrderDetails> {
                     const SizedBox(
                       height: 10,
                     ),
-                    TimelineTile(
 
-                      indicatorStyle: IndicatorStyle(color: CustomColor.mainColor,),
-                      afterLineStyle: LineStyle(color: CustomColor.mainColor),
-                      endChild: Container(height: 70, child: Text("hii")),
-                      isFirst: true,
-                    ),
-                    TimelineTile(
-                      beforeLineStyle: LineStyle(color: Colors.orange),
-                      indicatorStyle: IndicatorStyle(color: CustomColor.mainColor,),
-                      // afterLineStyle: LineStyle(color: CustomColor.mainColor),
-                      endChild: Container(height: 70, child: Text("hii")),
-                    ),
-                    TimelineTile(
-                      // beforeLineStyle:  LineStyle(color: CustomColor.mainColor),
+                    /// tagline portion
+                    Expanded(
+                      child: Container(
+                        padding: const EdgeInsets.only(left: 26, right: 8),
+                        child: Column(
+                          children: [
+                            /// 1st circle
+                            Expanded(
 
-                      endChild: Container(height: 70, child: Text("hii")),
-                    ),
-                    TimelineTile(
-                      endChild: Container(height: 70, child: Text("hii")),
-                      isLast: true,
-                    ),
-                    // Stepper(
-                    //     controlsBuilder: (context, details) {
-                    //       return Row(
-                    //         children: <Widget>[
-                    //           Container(
-                    //             child: null,
-                    //           ),
-                    //           Container(
-                    //             child: null,
-                    //           ),
-                    //         ], // <Widget>[]
-                    //       );
-                    //     },
-                    //     steps: [
-                    //       Step(
-                    //         label: const CircleAvatar(
-                    //           backgroundColor: Colors.blue,
-                    //         ),
-                    //         title: const Text(''),
-                    //         content: Container(alignment: Alignment.centerLeft, child: const Text('Content for Step 1')),
-                    //       ),
-                    //       const Step(
-                    //
-                    //         title: Text('Step 2 title'),
-                    //         content: Text('Content for Step 2'),
-                    //       ),
-                    //     ])
+
+                                flex: 1,
+                                child: Row(
+                                  children: [
+                                    SizedBox(
+                                      width: 30,
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          Expanded(flex: 1, child: Container()),
+                                          const CircleAvatar(
+                                            backgroundColor: CustomColor.mainColor,
+                                            radius: 10,
+                                          ),
+                                          const Expanded(
+                                              child: VerticalDivider(
+                                            color: CustomColor.mainColor,
+                                            thickness: 5,
+                                          ))
+                                        ],
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    Container(
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        children: [
+                                          Text(
+                                            "Order Placed",
+                                            style: CustomTheme.lightTheme().textTheme.labelSmall,
+                                          ),
+                                          Text(
+                                            "Order#123455 from Fashion Point",
+                                            style: CustomTheme.lightTheme()
+                                                .textTheme
+                                                .labelSmall!
+                                                .copyWith(fontSize: 10, color: const Color(0xFF606A7B)),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                    Expanded(child: Container()),
+                                    Container(
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        children: [
+                                          Text("05/08/2019",
+                                              style: CustomTheme.lightTheme()
+                                                  .textTheme
+                                                  .labelSmall!
+                                                  .copyWith(fontSize: 10, color: const Color(0xFF606A7B))),
+                                          Text("11:10 AM",
+                                              style: CustomTheme.lightTheme()
+                                                  .textTheme
+                                                  .labelSmall!
+                                                  .copyWith(fontSize: 10, color: const Color(0xFF606A7B)))
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                )),
+
+                            /// 1st divider
+                            Expanded(
+                                flex: 1,
+                                child: Row(
+                                  children: const [
+                                    SizedBox(
+                                      width: 30,
+                                      child: Center(
+                                        child: VerticalDivider(
+                                          color: CustomColor.mainColor,
+                                          thickness: 5,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                )),
+                            /// 2nd circle
+
+                            Expanded(
+
+                                flex: 1,
+                                child: Row(
+                                  children: [
+                                    Stack(
+                                      children: [
+                                        SizedBox(
+                                          width: 30,
+
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            children: const [
+                                              Expanded(
+                                                  flex: 1,
+                                                  child: VerticalDivider(
+                                                    color: CustomColor.mainColor,
+                                                    thickness: 5,
+                                                  )),
+                                              CircleAvatar(
+                                                backgroundColor: CustomColor.mainColor,
+                                                radius: 10,
+                                              ),
+                                              Expanded(
+                                                  child: VerticalDivider(
+                                                color: Colors.grey,
+                                                thickness: 5,
+                                              ))
+                                            ],
+                                          ),
+                                        ),
+                                        Center(
+                                          child: CircleAvatar(
+                                            backgroundColor: CustomColor.mainColor.withOpacity(0.4),
+                                            radius: 15,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    Container(
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        children: [
+                                          Text(
+                                            "Order Placed",
+                                            style: CustomTheme.lightTheme().textTheme.labelSmall,
+                                          ),
+                                          Text(
+                                            "Order#123455 from Fashion Point",
+                                            style: CustomTheme.lightTheme()
+                                                .textTheme
+                                                .labelSmall!
+                                                .copyWith(fontSize: 10, color: const Color(0xFF606A7B)),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                    Expanded(child: Container()),
+                                    Container(
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        children: [
+                                          Text("05/08/2019",
+                                              style: CustomTheme.lightTheme()
+                                                  .textTheme
+                                                  .labelSmall!
+                                                  .copyWith(fontSize: 10, color: const Color(0xFF606A7B))),
+                                          Text("11:10 AM",
+                                              style: CustomTheme.lightTheme()
+                                                  .textTheme
+                                                  .labelSmall!
+                                                  .copyWith(fontSize: 10, color: const Color(0xFF606A7B)))
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                )),
+
+                            /// 2nd divider
+                            Expanded(
+                                flex: 1,
+                                child: Row(
+                                  children: const [
+                                    SizedBox(
+                                      width: 30,
+                                      child: VerticalDivider(
+                                        color: Colors.grey,
+                                        thickness: 5,
+                                      ),
+                                    ),
+                                  ],
+                                )),
+                            Expanded(
+
+                                /// 3rd circle
+                                flex: 1,
+                                child: Row(
+                                  children: [
+                                    SizedBox(
+                                      width: 30,
+
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: const [
+                                          Expanded(
+                                              flex: 1,
+                                              child: VerticalDivider(
+                                                color: Colors.grey,
+                                                thickness: 5,
+                                              )),
+                                          CircleAvatar(
+                                            backgroundColor: Colors.grey,
+                                            radius: 10,
+                                          ),
+                                          Expanded(
+                                              child: VerticalDivider(
+                                            color: Colors.grey,
+                                            thickness: 5,
+                                          ))
+                                        ],
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    Container(
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        children: [
+                                          Text(
+                                            "Order Placed",
+                                            style: CustomTheme.lightTheme().textTheme.labelSmall,
+                                          ),
+                                          Text(
+                                            "Order#123455 from Fashion Point",
+                                            style: CustomTheme.lightTheme()
+                                                .textTheme
+                                                .labelSmall!
+                                                .copyWith(fontSize: 10, color: const Color(0xFF606A7B)),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                    Expanded(child: Container()),
+                                    Container(
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        children: [
+                                          Text("05/08/2019",
+                                              style: CustomTheme.lightTheme()
+                                                  .textTheme
+                                                  .labelSmall!
+                                                  .copyWith(fontSize: 10, color: const Color(0xFF606A7B))),
+                                          Text("11:10 AM",
+                                              style: CustomTheme.lightTheme()
+                                                  .textTheme
+                                                  .labelSmall!
+                                                  .copyWith(fontSize: 10, color: const Color(0xFF606A7B)))
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                )),
+                            /// 3rd divider
+                            Expanded(
+
+
+                                flex: 1,
+                                child: Row(
+                                  children: const [
+                                    SizedBox(
+                                      width: 30,
+                                      child: VerticalDivider(
+                                        color: Colors.grey,
+                                        thickness: 5,
+                                      ),
+                                    ),
+                                  ],
+                                )),
+                            Expanded(
+
+                                /// 4th circle
+                                flex: 1,
+                                child: Row(
+                                  children: [
+                                    SizedBox(
+                                      width: 30,
+
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          const Expanded(
+                                              flex: 1,
+                                              child: VerticalDivider(
+                                                color: Colors.grey,
+                                                thickness: 5,
+                                              )),
+                                          const CircleAvatar(
+                                            backgroundColor: Colors.grey,
+                                            radius: 10,
+                                          ),
+                                          Expanded(child: Container())
+                                        ],
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    Container(
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        children: [
+                                          Text(
+                                            "Order Placed",
+                                            style: CustomTheme.lightTheme().textTheme.labelSmall,
+                                          ),
+                                          Text(
+                                            "Order#123455 from Fashion Point",
+                                            style: CustomTheme.lightTheme()
+                                                .textTheme
+                                                .labelSmall!
+                                                .copyWith(fontSize: 10, color: const Color(0xFF606A7B)),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                    Expanded(child: Container()),
+                                    Container(
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        children: [
+                                          Text("05/08/2019",
+                                              style: CustomTheme.lightTheme()
+                                                  .textTheme
+                                                  .labelSmall!
+                                                  .copyWith(fontSize: 10, color: const Color(0xFF606A7B))),
+                                          Text("11:10 AM",
+                                              style: CustomTheme.lightTheme()
+                                                  .textTheme
+                                                  .labelSmall!
+                                                  .copyWith(fontSize: 10, color: const Color(0xFF606A7B)))
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                )),
+                          ],
+                        ),
+                      ),
+                    )
                   ],
                 ),
               ),
@@ -309,8 +612,8 @@ class _OrderDetailsState extends State<OrderDetails> {
                     height: 14,
                   ),
                   Row(
-                    children: [
-                      const Text("Qty:  "),
+                    children: const [
+                      Text("Qty:  "),
                     ],
                   )
                 ],

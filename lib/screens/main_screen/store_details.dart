@@ -23,6 +23,9 @@ class _StoreDetailsState extends State<StoreDetails> {
     ProductModel(name: "Chips", img: "assets/images/fruits.jpeg", traderName: "Tradly", price: "25"),
   ];
 
+  List<String> categoryList = ["All product", "Fruit", "Vegetables","Home Care", "Pet Care"];
+  int selected = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -310,6 +313,24 @@ class _StoreDetailsState extends State<StoreDetails> {
               const SizedBox(
                 height: 30,
               ),
+              // ListView.builder(itemBuilder: (context, index) {
+              //   return GestureDetector(
+              //     onTap: () {
+              //       selected = index;
+              //     },
+              //     child: Container(
+              //       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+              //       decoration: BoxDecoration(
+              //           border: Border.all(color: CustomColor.mainColor, width: 1),
+              //           color: CustomColor.mainColor,
+              //           borderRadius: BorderRadius.circular(24)),
+              //       child: Text(
+              //         categoryList[index],
+              //         style: CustomTheme.lightTheme().textTheme.labelSmall!.copyWith(color: CustomColor.secondaryColor),
+              //       ),
+              //     ),
+              //   );
+              // },),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(

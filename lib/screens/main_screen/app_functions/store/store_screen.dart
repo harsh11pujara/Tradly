@@ -80,6 +80,7 @@ class _StoreScreenState extends State<StoreScreen> {
             .titleSmall!
             .copyWith(fontSize: 18, color: CustomColor.productTextBlack.withOpacity(0.5)),
         textCapitalization: TextCapitalization.words,
+        cursorColor: CustomColor.mainColor,
         decoration: InputDecoration(
             contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
             focusedBorder: OutlineInputBorder(
@@ -116,38 +117,51 @@ class _StoreScreenState extends State<StoreScreen> {
         itemCount: newProduct.length + 1,
         itemBuilder: (context, index) {
           return index == 0
-              ? DottedBorder(
-                  radius: const Radius.circular(10),
-                  color: CustomColor.productTextBlack.withOpacity(0.3),
-                  borderType: BorderType.RRect,
-                  dashPattern: [6, 3],
-                  strokeWidth: 1.5,
-                  child: SizedBox(
-                    height: 220, // 220
-                    width: double.infinity, //180
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.add,
-                          color: CustomColor.productTextBlack.withOpacity(0.4),
-                          size: 40,
-                        ),
-                        const SizedBox(
-                          height: 17,
-                        ),
-                        Text(
-                          "Add Photos",
-                          style: CustomTheme.lightTheme()
-                              .textTheme
-                              .labelSmall!
-                              .copyWith(fontSize: 18, color: CustomColor.customBlack.withOpacity(0.6)),
-                        ),
-                      ],
+              ? GestureDetector(
+            onTap: () async{
+              await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CreateProduct(),
+                  )).then((value) {
+                setState(() {
+                  products.add(value);
+                });
+              });
+            },
+                child: DottedBorder(
+                    radius: const Radius.circular(10),
+                    color: CustomColor.productTextBlack.withOpacity(0.3),
+                    borderType: BorderType.RRect,
+                    dashPattern: [6, 3],
+                    strokeWidth: 1.5,
+                    child: SizedBox(
+                      height: 220, // 220
+                      width: double.infinity, //180
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.add,
+                            color: CustomColor.productTextBlack.withOpacity(0.4),
+                            size: 40,
+                          ),
+                          const SizedBox(
+                            height: 17,
+                          ),
+                          Text(
+                            "Add Product",
+                            style: CustomTheme.lightTheme()
+                                .textTheme
+                                .labelSmall!
+                                .copyWith(fontSize: 18, color: CustomColor.customBlack.withOpacity(0.6)),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                )
+              )
               : Stack(
                   children: [
                     CustomWidgets().showProduct(width: null, context: context, product: newProduct[index - 1]),

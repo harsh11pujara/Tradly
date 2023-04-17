@@ -26,7 +26,8 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     Timer(const Duration(seconds: 2), () {
-      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => NavigatorScreen()));
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const StartUpInfo()));
+      // Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => NavigatorScreen()));
     });
     super.initState();
   }

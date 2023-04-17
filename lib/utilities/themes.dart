@@ -30,7 +30,7 @@ class CustomColor {
   static const authButtonColor = Color(0xFF13B58C);
   static const customBlack = Color(0xFF4F4F4F);
   static const productTextBlack = Color(0xFF4A4A4A);
-  static const backgroundColor = Color(0xFFE5E5E5);
+  static const backgroundColor = Color(0xFFF6F9FF);
   static const textFieldColor = Color(0xFF333A42);
   static const taglineColor = Color(0xFFD8D8D8);
   static const dividerColor = Color(0xFFEFEFEF);

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tradly/screens/authentication_screen/login_screen.dart';
 import 'package:tradly/utilities/themes.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -27,18 +28,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
               children: [
                 Row(
                   children: [
-                    Container(
-                      height: 64,
-                      width: 64,
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(color: CustomColor.secondaryColor, width: 1),
-                          color: CustomColor.mainColor),
-                      child: const Center(
-                          child: Text(
-                        "T",
-                        style: TextStyle(color: CustomColor.secondaryColor, fontSize: 34, fontWeight: FontWeight.w600),
-                      )),
+                    Stack(
+                      children: [
+                        Container(
+                          height: 64,
+                          width: 64,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(color: CustomColor.secondaryColor, width: 1),
+                              color: CustomColor.mainColor),
+                          child: const Center(
+                              child: Text(
+                            "T",
+                            style: TextStyle(color: CustomColor.secondaryColor, fontSize: 34, fontWeight: FontWeight.w600),
+                          )),
+                        ),
+                        Positioned(bottom: 1,right : 1,child: CircleAvatar(backgroundColor: CustomColor.secondaryColor,radius: 8,))
+                      ],
                     ),
                     const SizedBox(
                       width: 15,
@@ -118,10 +124,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         height: 1,
                         thickness: 0.5,
                       ),
-                      Container(
-                          margin: const EdgeInsets.symmetric(vertical: 12),
-                          child: Text("Logout",
-                              style: CustomTheme.lightTheme().textTheme.labelSmall!.copyWith(color: CustomColor.mainColor))),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const LoginScreen(),), (route) => false);
+                        },
+                        child: Container(
+                            margin: const EdgeInsets.symmetric(vertical: 12),
+                            child: Text("Logout",
+                                style: CustomTheme.lightTheme().textTheme.labelSmall!.copyWith(color: CustomColor.mainColor))),
+                      ),
                       const SizedBox(
                         height: 10,
                       )

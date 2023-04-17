@@ -29,104 +29,118 @@ class _StartUpInfoState extends State<StartUpInfo> {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: CustomColor.mainColor,
-      body: Stack(
-        children: [
-          Positioned(bottom: 0, child: Container(color: Colors.white, height: 400, width: width)),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const SizedBox(
-                height: 130,
-              ),
-              Container(
-                width: 307,
-                height: 334,
-                padding: EdgeInsets.all(15),
-                decoration: BoxDecoration(color: CustomColor.secondaryColor, borderRadius: BorderRadius.circular(10)),
-                child: Dismissible(
-                  key: UniqueKey(),
-                  dismissThresholds: const {DismissDirection.horizontal : 0.6},
+      body: SizedBox(
 
-                  onUpdate: (details) {
-                    if(details.reached == true && updateIndex == true){
-                      setState(() {
-                        if(details.direction == DismissDirection.endToStart&& index<2){
-                          index = index + 1;
-                          updateIndex = false;
-                          print("plus $index");
-                        }
-                        if(details.direction == DismissDirection.startToEnd && index>0){
-                          index = index - 1;
-                          updateIndex = false;
-                          print("minus $index");
-                        }
-                      });
-                    }
-                  },
-                  child: SvgPicture.asset(
-                    infoImages[index],
-                    height: 243,
-                    width: 285,
+        child: Stack(
+          children: [
+            Positioned(bottom: 0, child: Container(color: Colors.white, height: height/2.2, width: width)),
+            Padding(
+              padding: EdgeInsets.only(bottom: height / 45),
+              child: SizedBox(
+                height: height,
+                width: width,
+                child: SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        height: height/4.5,
+                      ),
+                      Container(
+                        width: 307,
+                        height: 334,
+                        padding: const EdgeInsets.all(15),
+                        decoration: BoxDecoration(color: CustomColor.secondaryColor, borderRadius: BorderRadius.circular(10)),
+                        child: Dismissible(
+                          key: UniqueKey(),
+                          dismissThresholds: const {DismissDirection.horizontal : 0.6},
+
+                          onUpdate: (details) {
+                            if(details.reached == true && updateIndex == true){
+                              setState(() {
+                                if(details.direction == DismissDirection.endToStart&& index<2){
+                                  index = index + 1;
+                                  updateIndex = false;
+                                  print("plus $index");
+                                }
+                                if(details.direction == DismissDirection.startToEnd && index>0){
+                                  index = index - 1;
+                                  updateIndex = false;
+                                  print("minus $index");
+                                }
+                              });
+                            }
+                          },
+                          child: SvgPicture.asset(
+                            infoImages[index],
+                            height: 243,
+                            width: 285,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: height/40,
+                      ),
+                      Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 25),
+                          child: Text(
+                            descriptionText[index],
+                            softWrap: true,
+                            style: CustomTheme.lightTheme().textTheme.bodyMedium,
+                            textAlign: TextAlign.center,
+                          )),
+                      SizedBox(
+                        height: height/20,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CircleAvatar(
+                            radius: 6,
+                            backgroundColor: CustomColor.mainColor.withOpacity(index == 0 ? 1 : 0.4),
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          CircleAvatar(
+                            radius: 6,
+                            backgroundColor: CustomColor.mainColor.withOpacity(index == 1 ? 1 : 0.4),
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          CircleAvatar(
+                            radius: 6,
+                            backgroundColor: CustomColor.mainColor.withOpacity(index == 2 ? 1 : 0.4),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: height/20,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+
+                          if (index == 2) {
+                            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LoginScreen(),));
+                          }else{
+                            setState(() {
+                              index++;
+                            });
+                          }
+                        },
+                        child: CustomWidgets()
+                            .customSubmitButton(text: index != 2 ? "Next" : "Finish", color: CustomColor.mainColor, textColor: CustomColor.secondaryColor),
+                      )
+                    ],
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 15,
-              ),
-              Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 25),
-                  child: Text(
-                    descriptionText[index],
-                    softWrap: true,
-                    style: CustomTheme.lightTheme().textTheme.bodyMedium,
-                    textAlign: TextAlign.center,
-                  )),
-              const SizedBox(
-                height: 50,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CircleAvatar(
-                    radius: 6,
-                    backgroundColor: CustomColor.mainColor.withOpacity(index == 0 ? 1 : 0.4),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  CircleAvatar(
-                    radius: 6,
-                    backgroundColor: CustomColor.mainColor.withOpacity(index == 1 ? 1 : 0.4),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  CircleAvatar(
-                    radius: 6,
-                    backgroundColor: CustomColor.mainColor.withOpacity(index == 2 ? 1 : 0.4),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 45,
-              ),
-              GestureDetector(
-                onTap: () {
-
-                  if (index == 2) {
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LoginScreen(),));
-                  }else{
-                    setState(() {
-                      index++;
-                    });
-                  }
-                },
-                child: CustomWidgets()
-                    .customSubmitButton(text: index != 2 ? "Next" : "Finish", color: CustomColor.mainColor, textColor: CustomColor.secondaryColor),
-              )
-            ],
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }

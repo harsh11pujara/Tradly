@@ -90,15 +90,20 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
                           ));
                     },
                     icon: const Icon(Icons.favorite)),
-                IconButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => CartScreen(),
-                          ));
-                    },
-                    icon: const Icon(Icons.shopping_cart))
+                Stack(
+                  children: [
+                    IconButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => CartScreen(),
+                              ));
+                        },
+                        icon: const Icon(Icons.shopping_cart)),
+                    currentIndex == 0 ? Positioned(top: 7,right: 8,child: const CircleAvatar(radius: 6,backgroundColor: Color(0xFFFF7272),)) : Container()
+                  ],
+                )
               ],
             ),
           ],
@@ -123,14 +128,15 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
                             .titleSmall!
                             .copyWith(fontSize: 18, color: CustomColor.productTextBlack.withOpacity(0.5)),
                         textCapitalization: TextCapitalization.words,
+                         cursorColor: CustomColor.mainColor,
                         decoration: InputDecoration(
                             contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
                             focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(30),
-                                borderSide: BorderSide(color: CustomColor.secondaryColor)),
+                                borderSide: const BorderSide(color: CustomColor.secondaryColor)),
                             enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(30),
-                                borderSide: BorderSide(color: CustomColor.secondaryColor)),
+                                borderSide: const BorderSide(color: CustomColor.secondaryColor)),
                             prefixIcon: SvgPicture.asset(
                               "assets/icons/searchIcon.svg",
                               height: 34,

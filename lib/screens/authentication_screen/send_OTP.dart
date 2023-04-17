@@ -55,23 +55,25 @@ class _SendOTPState extends State<SendOTP> {
                   decoration: InputDecoration(
                       prefixIcon: Padding(
                         padding: const EdgeInsets.only(left: 15, right: 10),
-                        child: DropdownButton<String>(
-                          value: "+ $selectedItem",
-                          icon: const Icon(Icons.arrow_drop_down_sharp),
-                          items: dropDownItem.map((int item) {
-                            return DropdownMenuItem(value: "+ $item", child: Text("+$item"));
-                          }).toList(),
-                          onChanged: (value) {
-                            print(value!.split("+").last);
-                            setState(() {
-                              selectedItem = int.parse(value.split("+").last);
-                            });
-                          },
-                          style:
-                              GoogleFonts.montserrat(color: CustomColor.secondaryColor, fontWeight: FontWeight.w400, fontSize: 18),
-                          iconEnabledColor: CustomColor.secondaryColor,
-                          // focusColor: ,
-                          dropdownColor: CustomColor.mainColor,
+                        child: DropdownButtonHideUnderline(
+                          child: DropdownButton<String>(
+                            value: "+ $selectedItem",
+                            icon: const Icon(Icons.arrow_drop_down_sharp),
+                            items: dropDownItem.map((int item) {
+                              return DropdownMenuItem(value: "+ $item", child: Text("+$item"));
+                            }).toList(),
+                            onChanged: (value) {
+                              print(value!.split("+").last);
+                              setState(() {
+                                selectedItem = int.parse(value.split("+").last);
+                              });
+                            },
+                            style:
+                                GoogleFonts.montserrat(color: CustomColor.secondaryColor, fontWeight: FontWeight.w400, fontSize: 18),
+                            iconEnabledColor: CustomColor.secondaryColor,
+                            // focusColor: ,
+                            dropdownColor: CustomColor.mainColor,
+                          ),
                         ),
                       ),
                       contentPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
